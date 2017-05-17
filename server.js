@@ -13,6 +13,7 @@ io.on("connection", function(socket){
 	socket.on("message", function(message){
 		console.log("Received Message:", message);
 		socket.broadcast.emit("message", message);
+		socket.emit("clientNumber", clientNumber);
 	});
 });
 
