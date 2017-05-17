@@ -11,11 +11,14 @@ $(document).ready(function(){
 		if (event.keyCode !== 13) {
 			return;
 		}
+
 		var message = input.val();
 		addMessage(message);
-		input.val(" ");
+		socket.emit("message", message);
+		input.val("");
 	});
+
+	socket.on("message", addMessage);
 
 });
 
-socket.on("message",addMessage);
