@@ -33,6 +33,7 @@ $(document).ready(function() {
 	socket.on("message", addMessage);
 	socket.on("nickName", displayNickName);
 	socket.on("clientNumber", displayClientNumber);
+
 });
 
 
