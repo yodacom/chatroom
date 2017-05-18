@@ -1,27 +1,35 @@
-$(document).ready(function(){
-	var socket =  io();
+$(document).ready(function() {
+	var socket = io();
 	var input = $("input");
 	var messages = $("#messages");
-	var newConnection = $("#newConnection");
 	var clientNumber = $("#clientNumber");
+	var nickName = $("#nickName");
 
-	var addMessage = function(message){
-		messages.append("<div>" + message + "</div>");
+	var addMessage = function(message) {
+		messages.append(`<div> ${message} </div>`);
 	};
 
-	input.on("keydown", function(event){
+	var displayNickName = function(nickName) {
+		nickName.html(`<div> My Nickname is ${nickName} </div>`);
+	};
+	var displayClientNumber = function(num) {
+		clientNumber.html(`<div> Number of clients: ${num} </div>`);
+	};
+
+	input.on("keydown", function(event) {
 		if (event.keyCode !== 13) {
 			return;
 		}
 
 		var message = input.val();
-		var clientNumber = io.sockets.adapter.rooms(room).length; 
 		addMessage(message);
 		socket.emit("message", message);
 		input.val("");
 	});
 
 	socket.on("message", addMessage);
-
+	socket.on("nickName", displayNickName);
+	socket.on("clientNumber", displayClientNumber);
 });
+
 

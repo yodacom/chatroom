@@ -7,14 +7,25 @@ app.use(express.static("public"));
 
 var server = http.Server(app);
 var io = socket_io(server);
+var clientNumber = 0;
+var clientNickname = `nickname ${1}`;
 
-io.on("connection", function(socket){
+io.on("connection", function(socket) {
 	console.log("Client connected");
-	socket.on("message", function(message){
+	clientNumber++;
+	clientNickname++;
+	io.emit("clientNickname", clientNickname);
+	io.emit("clientNumber", clientNumber);
+
+	socket.on("message", function(message) {
 		console.log("Received Message:", message);
 		socket.broadcast.emit("message", message);
-		socket.emit("clientNumber", clientNumber);
+	});
+	socket.on("disconnect", function() {
+		clientNumber--;
+		io.emit("clientNumber", clientNumber);
 	});
 });
 
 server.listen(process.env.PORT || 8080);
+
