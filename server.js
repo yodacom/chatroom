@@ -25,7 +25,16 @@ io.on("connection", function(socket) {
 		clientNumber--;
 		io.emit("clientNumber", clientNumber);
 	});
+// // test nickname =========
+// 	io.on("connection", function(socket) {
+// 		socket.on("send-nickname", function(nickname) {
+// 			socket.nickname = nickname;
+// 			users.push(socket.nickname);
+// 			console.log(users);
+// 		});
+// 	});
+// // end test nickname ======
+
 });
 
 server.listen(process.env.PORT || 8080);
-

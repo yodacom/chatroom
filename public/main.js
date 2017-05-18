@@ -26,6 +26,9 @@ $(document).ready(function() {
 		socket.emit("message", message);
 		input.val("");
 	});
+// // test nickName
+// 	socket.emit('send-nickname', nickname);
+// //  end test nickName
 
 	socket.on("message", addMessage);
 	socket.on("nickName", displayNickName);
