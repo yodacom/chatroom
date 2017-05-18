@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var input = $("input");
 	var messages = $("#messages");
 	var clientNumber = $("#clientNumber");
-	var nickName = $("#nickName");
+	var nickName = $("#nickName");  // like to add variable to add #
 
 	var addMessage = function(message) {
 		messages.append(`<div> ${message} </div>`);

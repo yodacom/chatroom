@@ -8,7 +8,7 @@ app.use(express.static("public"));
 var server = http.Server(app);
 var io = socket_io(server);
 var clientNumber = 0;
-var clientNickname = `nickname ${1}`;
+var clientNickname = `nickname ${[1]}`;
 
 io.on("connection", function(socket) {
 	console.log("Client connected");
