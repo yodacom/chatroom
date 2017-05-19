@@ -8,13 +8,13 @@ app.use(express.static("public"));
 var server = http.Server(app);
 var io = socket_io(server);
 var clientNumber = 0;
-var clientNickname = `nickname ${[1]}`;
+var clientNickname = 0;
 
 io.on("connection", function(socket) {
 	console.log("Client connected");
 	clientNumber++;
 	clientNickname++; // add number to end of nickname
-	io.emit("clientNickname", clientNickname);
+	io.emit("nickName", `nickname ${clientNickname}`);
 	io.emit("clientNumber", clientNumber);
 
 	socket.on("message", function(message) {

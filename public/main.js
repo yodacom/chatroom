@@ -9,8 +9,8 @@ $(document).ready(function() {
 		messages.append(`<div> ${message} </div>`);
 	};
 
-	var displayNickName = function(nickName) {
-		nickName.html(`<div> My Nickname is ${nickName} </div>`);
+	var displayNickName = function(Name) {
+		nickName.html(`<div> My Nickname is ${Name} </div>`);
 	};
 	var displayClientNumber = function(num) {
 		clientNumber.html(`<div> Number of clients: ${num} </div>`);
