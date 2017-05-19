@@ -22,7 +22,7 @@ $(document).ready(function() {
 		}
 
 		var message = input.val();
-		addMessage(message);
+		addMessage('Me: ' + message);
 		socket.emit("message", message);
 		input.val("");
 	});

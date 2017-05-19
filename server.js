@@ -11,15 +11,16 @@ var clientNumber = 0;
 var clientNickname = 0;
 
 io.on("connection", function(socket) {
-	console.log("Client connected");
+	console.log("Client connected", socket.id);
 	clientNumber++;
 	clientNickname++; // add number to end of nickname
-	io.emit("nickName", `nickname ${clientNickname}`);
+	socket.nickName = `nickname ${clientNickname}`;
+	socket.emit("nickName", `nickname ${clientNickname}`);
 	io.emit("clientNumber", clientNumber);
 
 	socket.on("message", function(message) {
 		console.log("Received Message:", message);
-		socket.broadcast.emit("message", message);
+		socket.broadcast.emit("message", `${socket.nickName}: ${message}`);
 	});
 	socket.on("disconnect", function() {
 		clientNumber--;
