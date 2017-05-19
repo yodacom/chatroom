@@ -13,7 +13,7 @@ var clientNickname = `nickname ${[1]}`;
 io.on("connection", function(socket) {
 	console.log("Client connected");
 	clientNumber++;
-	clientNickname++;
+	clientNickname++; // add number to end of nickname
 	io.emit("clientNickname", clientNickname);
 	io.emit("clientNumber", clientNumber);
 
